@@ -6,8 +6,8 @@ export const StyledForm = styled.form`
   margin: auto;
   margin-bottom: 20px;
   padding: 15px;
-  border: 1px solid #000;
-  border-radius: 2px;
+  /* border: 1px solid #000;
+  border-radius: 2px; */
   width: 270px;
 `;
 
@@ -18,6 +18,8 @@ export const Label = styled.label`
 export const Input = styled.input`
   margin-bottom: 5px;
   padding: 5px;
+  border: 1px solid grey;
+  border-radius: 3px;
 `;
 
 export const Button = styled.button`

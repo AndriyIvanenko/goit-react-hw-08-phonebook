@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const FilterSection = styled.section`
   display: flex;
+  width: fit-content;
+  margin: auto;
   flex-direction: column;
 `;
 
@@ -10,6 +12,6 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  width: 200px;
+  width: 270px;
   padding: 5px;
 `;
