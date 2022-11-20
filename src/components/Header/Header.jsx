@@ -1,27 +1,19 @@
 import { Outlet } from 'react-router-dom';
-import { StyledNav, StyledNavLink, Button } from './Header.styled';
-import { useSelector } from 'react-redux';
-import { getIsLoggedIn } from 'redux/Auth/selectors';
+import { HeaderContainer, StyledNav } from './Header.styled';
+import { UserMenu } from 'components/UserMenu/UserMenu';
+import { UserNav } from './UserNav/UserNav';
+import { AuthNav } from './AuthNav/AuthNav';
 
 export const Header = () => {
-  const isLoggedIn = useSelector(getIsLoggedIn);
-
   return (
     <>
-      <StyledNav>
-        <StyledNavLink to="/" end>
-          Home
-        </StyledNavLink>
-        {isLoggedIn && <StyledNavLink to="/phonebook">PhoneBook</StyledNavLink>}
-        <div style={{ marginLeft: 'auto' }}>
-          {!isLoggedIn && (
-            <StyledNavLink to="/register">Register</StyledNavLink>
-          )}
-          <StyledNavLink to="/login">Log In</StyledNavLink>
-          {isLoggedIn && <Button type="button">Log off</Button>}
-        </div>
-      </StyledNav>
-
+      <HeaderContainer>
+        <StyledNav>
+          <UserNav />
+          <AuthNav />
+        </StyledNav>
+        <UserMenu />
+      </HeaderContainer>
       <Outlet />
     </>
   );

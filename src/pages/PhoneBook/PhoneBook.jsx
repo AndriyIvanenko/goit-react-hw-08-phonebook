@@ -5,8 +5,8 @@ import { Filter } from 'components/Filter/Filter';
 import { Loader } from 'components/Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getIsLoading, getError } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import { getIsLoading, getError } from 'redux/Contacts/selectors';
+import { fetchContacts } from 'redux/Contacts/operations';
 
 export const PhoneBook = () => {
   const dispatch = useDispatch();

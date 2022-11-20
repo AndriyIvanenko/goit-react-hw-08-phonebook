@@ -1,10 +1,12 @@
 import { useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
+import { getContacts, getFilter } from 'redux/Contacts/selectors';
 import { Li } from './Contacts.styled';
 import { ContactsItem } from 'components/ContactsItem/ContactsItem';
 
 const filteredContacts = (contacts, filterValue) => {
-  return contacts.filter(contact => contact.name.toLowerCase().includes(filterValue.toLowerCase()));
+  return contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filterValue.toLowerCase())
+  );
 };
 
 export const Contacts = () => {
