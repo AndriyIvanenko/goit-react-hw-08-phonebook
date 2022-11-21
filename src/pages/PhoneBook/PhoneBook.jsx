@@ -7,25 +7,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getIsLoading, getError } from 'redux/Contacts/selectors';
 import { fetchContacts } from 'redux/Contacts/operations';
+import { getIsLoggedIn } from 'redux/Auth/selectors';
 
 export const PhoneBook = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
+  const isLoggedIn = useSelector(getIsLoggedIn);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
-    <Section>
-      <H1>Phonebook</H1>
-      <Form />
-      <H2>Contacts</H2>
-      <Filter />
-      {isLoading && !error && <Loader />}
-      <Contacts />
-    </Section>
+    <>
+      {isLoggedIn && (
+        <Section>
+          <H1>Phonebook</H1>
+          <Form />
+          <H2>Contacts</H2>
+          <Filter />
+          {isLoading && !error && <Loader />}
+          <Contacts />
+        </Section>
+      )}
+    </>
   );
 };
 

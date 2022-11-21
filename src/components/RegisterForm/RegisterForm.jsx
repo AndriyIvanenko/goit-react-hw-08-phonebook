@@ -13,7 +13,6 @@ export const RegisterForm = () => {
       email: form.elements.email.value,
       password: form.elements.password.value,
     };
-    // console.log(newUser);
     dispatch(register(newUser));
     form.reset();
   };

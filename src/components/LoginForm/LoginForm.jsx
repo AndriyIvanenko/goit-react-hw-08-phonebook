@@ -1,9 +1,14 @@
 import { StyledForm, Label, Input, Button } from './LoginForm.styled';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/Auth/operations';
+// import { useNavigate } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+// import { getIsLoggedIn } from 'redux/Auth/selectors';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const isLoggedIn = useSelector(getIsLoggedIn);
 
   const formSubmitHandler = evt => {
     evt.preventDefault();
@@ -15,6 +20,10 @@ export const LoginForm = () => {
     dispatch(logIn(user));
     form.reset();
   };
+
+  // if (isLoggedIn) {
+  //   navigate('/phonebook');
+  // }
 
   return (
     <StyledForm onSubmit={formSubmitHandler}>

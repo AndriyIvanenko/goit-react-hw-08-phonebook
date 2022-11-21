@@ -7,7 +7,7 @@ export const MenuContainer = styled.div`
   padding-right: 10px;
 `;
 
-export const InfoContainer = styled.div`
+export const UserInfo = styled.div`
   font-size: 18px;
   font-weight: 600;
 `;
