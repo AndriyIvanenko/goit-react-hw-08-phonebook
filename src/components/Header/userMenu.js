@@ -2,32 +2,36 @@ import { useSelector } from 'react-redux';
 import { getUser, getIsLoggedIn } from 'redux/Auth/selectors';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/Auth/operations';
-import { Button, UserInfo, MenuContainer } from './UserMenu.styled';
-// import { useNavigate } from 'react-router-dom';
+import { Flex, Text, Button } from '@chakra-ui/react';
 
 export const UserMenu = () => {
   const user = useSelector(getUser);
   const isLoggedIn = useSelector(getIsLoggedIn);
-  // const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
   const onLogoutClick = event => {
     event.preventDefault();
-    // navigate('/');
     dispatch(logOut());
   };
 
   return (
-    <MenuContainer>
-      {isLoggedIn && (
+    isLoggedIn && (
+      <Flex alignItems={'center'}>
         <>
-          <UserInfo>{user.email}</UserInfo>
-          <Button type="button" onClick={onLogoutClick}>
+          <Text fontWeight={500} mr={2}>
+            {user.email}
+          </Text>
+          <Button
+            size={'sm'}
+            type="button"
+            onClick={onLogoutClick}
+            _hover={{ color: '#fff', backgroundColor: '#cf2828' }}
+          >
             Logout
           </Button>
         </>
-      )}
-    </MenuContainer>
+      </Flex>
+    )
   );
 };

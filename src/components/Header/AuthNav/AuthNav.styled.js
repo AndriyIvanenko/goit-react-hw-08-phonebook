@@ -6,6 +6,7 @@ export const StyledNavLink = styled(NavLink)`
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
+  transition: color linear 150ms;
 
   &:not(:last-child) {
     margin-right: 20px;

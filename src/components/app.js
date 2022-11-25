@@ -1,15 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
-import { Header } from 'components/Header/Header';
-import { Home } from 'pages/Home/Home';
-import { PhoneBook } from 'pages/PhoneBook/PhoneBook';
-import { Register } from 'pages/Register/Register';
-import { Login } from 'pages/LogIn/LogIn';
+import { Header } from 'components/Header/header';
+import { Home } from 'pages/home';
+import { PhoneBook } from 'pages/phoneBook';
+import { Register } from 'pages/register';
+import { Login } from 'pages/logIn';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/Auth/operations';
-import { PrivateRoute } from 'components/PrivateRoute/privateRoute';
-import { RestrictedRoute } from 'components/RestrictedRoute/restrictedRoute';
+import { PrivateRoute } from 'components/privateRoute';
+import { RestrictedRoute } from 'components/restrictedRoute';
+import { NotFound } from 'pages/notFound';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -27,23 +28,18 @@ export const App = () => {
         <Route index element={<Home />} />
         <Route
           path="phonebook"
-          element={
-            <PrivateRoute redirectTo="/login" component={<PhoneBook />} />
-          }
+          element={<PrivateRoute redirectTo="/login" component={<PhoneBook />} />}
         />
         <Route
           path="register"
-          element={
-            <RestrictedRoute redirectTo="/phonebook" component={<Register />} />
-          }
+          element={<RestrictedRoute redirectTo="/phonebook" component={<Register />} />}
         />
         <Route
           path="login"
-          element={
-            <RestrictedRoute redirectTo="/phonebook" component={<Login />} />
-          }
+          element={<RestrictedRoute redirectTo="/phonebook" component={<Login />} />}
         />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

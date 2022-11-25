@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'redux/Contacts/selectors';
-import { Li } from './Contacts.styled';
-import { ContactsItem } from 'components/ContactsItem/ContactsItem';
+import { ContactsItem } from 'components/contactsItem';
+import { List, ListItem, ListIcon } from '@chakra-ui/react';
+import { MdCheckCircle } from 'react-icons/md';
 
 const filteredContacts = (contacts, filterValue) => {
   return contacts.filter(contact =>
@@ -15,12 +16,13 @@ export const Contacts = () => {
   const filteredContactList = filteredContacts(contacts, filterValue);
 
   return (
-    <ul>
+    <List spacing={1}>
       {filteredContactList.map(contact => (
-        <Li key={contact.id}>
+        <ListItem key={contact.id} display={'flex'} alignItems={'center'}>
+          <ListIcon as={MdCheckCircle} color="green.500" />
           <ContactsItem contact={contact}></ContactsItem>
-        </Li>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };

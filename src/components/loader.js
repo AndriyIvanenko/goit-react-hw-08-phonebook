@@ -1,9 +1,9 @@
+import { Box } from '@chakra-ui/react';
 import { ThreeDots } from 'react-loader-spinner';
-import { Div } from './Loader.styled';
 
 export const Loader = () => {
   return (
-    <Div>
+    <Box w={'fit-content'} m={'auto'} mb={'20px'}>
       <ThreeDots
         height="40"
         width="80"
@@ -14,6 +14,6 @@ export const Loader = () => {
         wrapperClassName=""
         visible={true}
       />
-    </Div>
+    </Box>
   );
 };
